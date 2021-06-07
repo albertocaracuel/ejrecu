@@ -46,7 +46,7 @@ public class Prueba {
         double resultado = listaMaestros.calcularImporteLista(15000);
         //lo muestro
         System.out.println("La suma de todos los sueldos es: " + resultado);
-        System.out.println("-----------------------------");
+        System.out.println("------------------nuevo-----------");
         //recorrer la lista y llamar al metodo que te calcula el tiempo
         listaMaestros.calcularTiempoTrabajando();
         

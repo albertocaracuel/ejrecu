@@ -22,10 +22,7 @@ public class ProfesorInterino extends Profesor implements Comparable<ProfesorInt
         this.fechaFinInterinidad = fechaFinInterinidad;
     }
 
-    @Override
-    public String toString() {
-        return "ProfesorInterino{" + "fechaInicioInterinidad=" + fechaInicioInterinidad + ", fechaFinInterinidad=" + fechaFinInterinidad + '}';
-    }
+    
 
    
 
@@ -55,6 +52,11 @@ public class ProfesorInterino extends Profesor implements Comparable<ProfesorInt
      public double importeNomina(double sueldoBase){
         double sueldo=(sueldoBase*0.15)+sueldoBase;
         return sueldo;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfesorInterino{" + "fechaInicioInterinidad=" + fechaInicioInterinidad + ", fechaFinInterinidad=" + fechaFinInterinidad + '}';
     }
      
    

@@ -34,7 +34,10 @@ public abstract class Profesor extends Persona {
 
     @Override
     public String toString() {
-        return  "idProfesor=" + idProfesor + '}';
+         String atributoSuperClase;
+        //igualo el string al toString de la clase Profesor
+        atributoSuperClase = super.toString();
+        return   atributoSuperClase + "idProfesor=" + idProfesor + '}';
     }
     
     

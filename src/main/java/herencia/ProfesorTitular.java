@@ -28,14 +28,6 @@ public class ProfesorTitular extends Profesor implements Comparable<ProfesorTitu
         this.tomaPosesion = tomaPosesion;
     }
 
-    @Override
-    public String toString() {
-        String atributoSuperClase;
-        //igualo el string al toString de la clase Profesor
-        atributoSuperClase = super.toString();
-        //Concateno los atributos de la superclase con la subclase
-        return atributoSuperClase + "tomaPosesion=" + tomaPosesion + '}';
-    }
    
     @Override
     public int compareTo(ProfesorTitular o) {
@@ -45,6 +37,11 @@ public class ProfesorTitular extends Profesor implements Comparable<ProfesorTitu
      public double importeNomina(double sueldoBase){
         double sueldo=(sueldoBase*0.3)+sueldoBase;
         return sueldo;
+    }
+
+    @Override
+    public String toString() {
+        return "ProfesorTitular{" + "tomaPosesion=" + tomaPosesion + '}';
     }
     
      
