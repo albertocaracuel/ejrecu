@@ -26,5 +26,7 @@ public class Prueba {
         tarea.leerTXT("./CursosAcabados.txt");
         
         tarea.escribirJSON("Cursos.json");
+        
+        tarea.leerJSON("Cursos.json");
     }
 }

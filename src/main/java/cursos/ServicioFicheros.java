@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +25,7 @@ import java.util.Scanner;
 public class ServicioFicheros {
 
     private ArrayList<ObjetoFichero> lista = new ArrayList<>();
+    private ArrayList<ObjetoFichero> listaJSON = new ArrayList<>();
     
 
     public ServicioFicheros() {
@@ -137,10 +137,16 @@ public class ServicioFicheros {
                 // línea en función del carácter separador de campos del fichero CSV
                 tokens = linea.split("\t");
                
+               
                 for (String string : tokens) {
                     
                     System.out.print(string + "\t");
                 }
+                
+                 ObjetoFichero nuevo= new ObjetoFichero();
+                nuevo.setTitulo(tokens[0]);
+                nuevo.setFechafin(LocalDate.parse(tokens[1]));
+                listaJSON.add(nuevo);
                 System.out.println();
             }
         } catch (FileNotFoundException e) {
@@ -154,12 +160,15 @@ public class ServicioFicheros {
         mapeador.configure(SerializationFeature.INDENT_OUTPUT, true);
 
         // Escribe en un fichero JSON el catálogo de muebles
-        mapeador.writeValue(new File(idFichero), lista);
+        mapeador.writeValue(new File(idFichero), listaJSON);
     }
     
     
-    public void leerJSON(String url){
-        
+    public void leerJSON(String url) throws IOException{
+         ObjectMapper mapeador = new ObjectMapper();
+        mapeador.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        listaJSON = mapeador.readValue(new File(url),
+                mapeador.getTypeFactory().constructCollectionType(ArrayList.class, ObjetoFichero.class));
     }
     
 }

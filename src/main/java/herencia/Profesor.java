@@ -9,7 +9,7 @@ package herencia;
  *
  * @author alberto
  */
-public abstract class Profesor extends Persona {
+public abstract  class Profesor extends Persona {
     private String idProfesor;
 
     public Profesor(String idProfesor, String nombre, String DNI, String nacionalidad, int edad) {
@@ -19,10 +19,7 @@ public abstract class Profesor extends Persona {
 
    
     
-    public double importeNomina(double sueldoBase){
-        double sueldo=sueldoBase;
-        return sueldo;
-    }
+    public abstract double importeNomina(double sueldoBase);
 
     public String getIdProfesor() {
         return idProfesor;

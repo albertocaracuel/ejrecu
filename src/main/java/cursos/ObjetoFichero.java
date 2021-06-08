@@ -5,6 +5,11 @@
  */
 package cursos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import java.time.LocalDate;
 
 /**
@@ -18,7 +23,13 @@ public class ObjetoFichero implements Comparable<ObjetoFichero> {
     private String titulo;
     private String modalidad;
     private String estado;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate fechaInicio;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     private LocalDate fechafin;
     private String dirigido;
 
@@ -93,6 +104,7 @@ public class ObjetoFichero implements Comparable<ObjetoFichero> {
     public String toString() {
         return "ObjetoFichero{" + "centro=" + centro + ", codigo=" + codigo + ", titulo=" + titulo + ", modalidad=" + modalidad + ", estado=" + estado + ", fechaInicio=" + fechaInicio + ", fechafin=" + fechafin + ", dirigido=" + dirigido + '}';
     }
+
     //ordenar lista por codigo y si los codigos son iguales por titulo
     @Override
     public int compareTo(ObjetoFichero o) {
